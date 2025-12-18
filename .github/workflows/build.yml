@@ -1,0 +1,47 @@
+name: Build TaskTracker
+
+# Kiedy uruchamiać workflow
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+    branches: ["main", "master"]
+
+jobs:
+  build:
+    name: Build on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        build_type: [Release, Debug]
+
+    steps:
+      # 1. Pobierz kod repozytorium
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Ustaw narzędzia CMake
+      - name: Setup CMake
+        uses: lukka/get-cmake@v4 # pobiera CMake w wersji domyślnej
+
+      # 3. Konfiguruj projekt
+      - name: Configure project
+        run: |
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+
+      # 4. Zbuduj projekt
+      - name: Build
+        run: |
+          cd build
+          cmake --build . --config ${{ matrix.build_type }}
+
+      # 5. (Opcjonalnie) uruchom testy, jeśli masz
+      #- name: Run tests
+      #  if: ${{ always() }}
+      #  run: |
+      #    cd build
+      #    ctest --output-on-failure
