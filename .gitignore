@@ -1,0 +1,23 @@
+# Build
+/build/
+out/
+CMakeFiles/
+CMakeCache.txt
+*.cmake
+*.user
+
+# Visual Studio
+.vs/
+*.vcxproj*
+*.sln
+*.slnx
+
+# Qt
+*.pro.user
+moc_*
+ui_*
+qrc_*
+
+# System
+Thumbs.db
+.DS_Store
