@@ -23,8 +23,8 @@ jobs:
         uses: actions/checkout@v3
 
       # 2. Ustaw narzędzia CMake
-      - name: Setup CMake
-        uses: lukka/get-cmake@v4 # pobiera CMake w wersji domyślnej
+      #- name: Setup CMake
+      #  uses: lukka/get-cmake@v4 # pobiera CMake w wersji domyślnej
 
       # 3. Konfiguruj projekt
       - name: Configure project
