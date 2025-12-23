@@ -18,6 +18,7 @@ qt_standard_project_setup()
 set(SOURCES
     src/main.cpp
     src/tasktracker.cpp
+    src/sessionTimer.cpp
 )
 
 set(UI_FILES
@@ -26,6 +27,7 @@ set(UI_FILES
 
 set(INCLUDES
     include/tasktracker.h
+    include/sessionTimer.h
 )
 
 include_directories(
