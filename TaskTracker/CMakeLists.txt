@@ -1,3 +1,8 @@
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
+
+
 cmake_minimum_required(VERSION 3.16)
 project(TaskTracker LANGUAGES CXX)
 
@@ -55,3 +60,7 @@ target_link_libraries(${PROJECT_NAME}
         Qt::Gui
         Qt::Widgets
 )
+
+enable_testing()
+add_subdirectory(tests)
+

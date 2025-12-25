@@ -1,23 +1,16 @@
 #include "tasktracker.h"
-#include <QTimeEdit>
 
 TaskTracker::TaskTracker(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
-
-    QPushButton* startButton = centralWidget()->findChild<QPushButton*>("startButton");
-    connect(startButton, &QPushButton::clicked, this, &TaskTracker::OnStartButtonClicked);
-
-    QPushButton* stopButton = centralWidget()->findChild<QPushButton*>("stopButton");
-    connect(stopButton, &QPushButton::clicked, this, &TaskTracker::OnStopButtonClicked);
-    /*
+    
     connect(ui.startButton, &QPushButton::clicked,
 		this, &TaskTracker::OnStartButtonClicked);
 
     connect(ui.stopButton, &QPushButton::clicked,
             this, &TaskTracker::OnStopButtonClicked);
-    */
+    
 
     connect(&sessionTimer_, &SessionTimer::TimeUpdated,
         this, &TaskTracker::UpdateTime);
@@ -44,6 +37,6 @@ void TaskTracker::UpdateTime(qint64 elapsedSeconds)
 
     QTime t(h, m, s);
 
-    QTimeEdit* timeEdit = centralWidget()->findChild<QTimeEdit*>("time");
-	timeEdit->setTime(t);
+    ui.time->setTime(t);
+	ui.dial->setValue(static_cast<int>(s));
 }
