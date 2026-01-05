@@ -18,7 +18,7 @@ private slots:
 	void UpdateTime(qint64 elapsedSeconds);
 
 private:
-    Ui::TaskTrackerClass ui;
+    Ui::TaskTrackerClass ui_;
     SessionTimer sessionTimer_;
 };
 

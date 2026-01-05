@@ -3,12 +3,12 @@
 TaskTracker::TaskTracker(QWidget *parent)
     : QMainWindow(parent)
 {
-    ui.setupUi(this);
+    ui_.setupUi(this);
     
-    connect(ui.startButton, &QPushButton::clicked,
+    connect(ui_.startButton, &QPushButton::clicked,
 		this, &TaskTracker::OnStartButtonClicked);
 
-    connect(ui.stopButton, &QPushButton::clicked,
+    connect(ui_.stopButton, &QPushButton::clicked,
             this, &TaskTracker::OnStopButtonClicked);
     
 
@@ -37,6 +37,6 @@ void TaskTracker::UpdateTime(qint64 elapsedSeconds)
 
     QTime t(h, m, s);
 
-    ui.time->setTime(t);
-	ui.dial->setValue(static_cast<int>(s));
+    ui_.time->setTime(t);
+	ui_.dial->setValue(static_cast<int>(s));
 }
