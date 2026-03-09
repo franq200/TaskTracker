@@ -32,11 +32,12 @@ void TaskTracker::OnStopButtonClicked()
 void TaskTracker::UpdateTime(qint64 elapsedSeconds)
 {
     uint64_t s = elapsedSeconds % 60;
-	uint64_t m = (elapsedSeconds / 60) % 60;
+	uint64_t m = (elapsedSeconds % 3600) / 60;
 	uint64_t h = elapsedSeconds / 3600;
 
-    QTime t(h, m, s);
-
-    ui_.time->setTime(t);
-	ui_.dial->setValue(static_cast<int>(s));
+    QString timeText = QString("%1:%2:%3")
+        .arg(h, 2, 10, QChar('0'))
+        .arg(m, 2, 10, QChar('0'))
+        .arg(s, 2, 10, QChar('0'));
+	ui_.timeLabel->setText(timeText);
 }
